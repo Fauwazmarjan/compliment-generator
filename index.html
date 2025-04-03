@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliment Generator 🌸</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; margin-top: 50px; }
+        button { background-color: pink; border: none; padding: 15px; font-size: 20px; cursor: pointer; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Click the button for a compliment 💖</h1>
+    <button onclick="getCompliment(); playMusic();">Give Me a Compliment!</button>
+    <p id="compliment"></p>
+
+    <audio id="loveMusic" src="romantic.mp3"></audio>
+
+    <script>
+        function getCompliment() {
+            fetch('/compliment')
+                .then(response => response.json())
+                .then(data => document.getElementById('compliment').innerText = data.compliment);
+        }
+        function playMusic() { document.getElementById('loveMusic').play(); }
+    </script>
+</body>
+</html>
